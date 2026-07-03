@@ -13,3 +13,16 @@ h1{
 #home-into:hover{    
     background-color:mistyrose;
 }
+#nav{
+    text-align:center;
+    background-color:plum;
+    border: 3pt;
+    border-color:black;
+    border-style:solid;
+    margin-bottom:5px;
+}
+#nav a{
+    text-decoration:none;
+    color:black;
+    margin:0px 5px;
+}
