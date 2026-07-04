@@ -71,7 +71,7 @@ p{
     width: 415px;          /* Same as search-box */
     margin: 0 auto;        /* Center it */
     margin-top: 2px;       /* Small gap below search bar */
-    border: 1px solid #999;
+    /* border: 1px solid #999; */
     border-radius: 0 0 1px 1px;
     background: white;
     text-align: left;

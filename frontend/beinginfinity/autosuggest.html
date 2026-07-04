@@ -3,42 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Being Infinity</title>
-    <link rel="stylesheet" href="autosuggest.css">
+    <title>Document</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .top{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .content{
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        
+        .highlight{
+    color: #e964e0;   /* Blue */
+    font-weight: bold;
+}
+p{
+    color: #6B7280;   /* Gray */
+}
+        input{
+            padding: 8px;
+            width: 250px;
+        }
+        .search-box{
+    width: 350px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.search-box input{
+    width: 100%;
+    padding: 12px 12px 12px 45px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 30px;   /* Rounded corners */
+    outline: none;
+    box-sizing: border-box;
+}
+
+.search-box input:focus{
+    border-color: #4F46E5;
+}
+
+.search-icon{
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: gray;
+    font-size: 18px;
+
+}
+#suggestion-box{
+    width: 320px;          /* Same as search-box */
+    margin: 0 auto;        /* Center it */
+    margin-top: 2px;       /* Small gap below search bar */
+    /* border: 1px solid #999; */
+    border-radius: 0 0 1px 1px;
+    background: white;
+    text-align: left;
+    padding: 10px 12px;
+}
+#suggestion-item{
+    border:1px solid gray;
+    padding :10px;
+    border-radius: 5px;
+}
+    </style>
 </head>
 <body>
 
-<div class="container">
+    <div class="top">
+        <!-- Gear on the left -->
+        <span>&#9881;</span>
 
-    <!-- Top Status -->
-    <div class="status-bar">
-        <div class="left-status">
-            ⚙ 
-        </div>
-
-        <div class="right-status">
-            • online | 🕒 -ms
+        <!-- Status on the right -->
+        <div>
+            &#x2022; Online | &#x1F552; -ms
         </div>
     </div>
 
-    <h1>
-    <span class="first-name">Kakkirala</span>
-    <span class="last-name">Reshma</span>
-   </h1>
-
-    <p>
-        One Million Phrases. Four Algorithms.
-        Prefix Based Auto Suggest
-    </p>
+    <div class="content">
+       
+        <h1><span class="highlight">Kakkirala</span>Reshma</h1>
+        <p>One million phrases, Four Algorithms, Prefix Base Auto Suggest...</p>
+    </div>
 
     <div class="search-box">
     <span class="search-icon">&#128269;</span>
-    <input type="text" placeholder="Start typing to search phrases">
-    </div>
-    <div id="suggestion-box">
-        Suggestion box
-    </div>
+    <input id="search-box" type="text" placeholder="Start Typing to search">
 </div>
+      <div id="suggestion-box" >
+            <!-- Suggestion box
+    -->
+       
+    </div>
+    <script>
+        var searchBox=document.getElementById("search-box");
+        var suggestionBox=document.getElementById("suggestion-box");
+        searchBox.addEventListener("input",function(){
+            //1.get user type test
+            //2 Make api call to get suggestion
+            //3 Display data in the html
+            var userInput = searchBox.value;
+            if(userInput.trim() === ""){
+                suggestionBox.innerHTML = "";
+                return;
+            }
+            else{
+                var url1=" https://autosuggest-backend.onrender.com/api/autosuggest?q=";
+                var url3="&algorithm=trie&limit=10&weighted=false";
+                var url=url1+userInput+url3;
+               
+            }
+
+            // Simulate an API call (replace this with your actual API call)
+            fetch(url)
+                .then(function(response){
+                    return response.json();
+                })
+                //  => response.json())
+                .then(function(data) 
+                {
+                    console.log(data);
+                    var resultsArray = data.results;
+                    var htmlResults = "";
+                    for(var i=0; i<resultsArray.length; i++){
+                        htmlResults += "<div>" + resultsArray[i].text + "</div>";
+                    }
+                    suggestionBox.innerHTML = htmlResults;
+                })
+                    
+                }
+        );
+
+    </script>
 
 </body>
 </html>
