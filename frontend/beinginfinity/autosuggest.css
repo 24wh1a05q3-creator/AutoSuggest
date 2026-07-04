@@ -1,0 +1,48 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Georgia, serif;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+
+.container{
+    width:900px;           /* increase width */
+    text-align:center;
+}
+
+.status-bar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:50px;
+    font-size:22px;
+}
+
+h1{
+    font-size:60px;
+    margin-bottom:20px;
+}
+
+p{
+    font-size:24px;
+    margin-bottom:30px;
+}
+
+.search-box{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:10px;
+}
+
+.search-box input{
+    width:350px;
+    padding:10px;
+    font-size:18px;
+}
