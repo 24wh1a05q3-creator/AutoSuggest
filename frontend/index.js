@@ -1,30 +1,26 @@
-console.log("hello from js");
-alert("Hello from JS");
 const users = [
   {
-    "name" :"Jane Doe",
+    "name" :"jane",
     "gender" : "Female",
-    "image" : "../images/jane.png"
+    "image" : "./images/abc.png"
   },
   {
-    "name" :"John Doe",
+    "name" :"jhon",
     "gender" : "Male",
-    "image" : "../images/john.png"
+    "image" : "./images/abc.png"
   },
 ]
 let curUserId = 0;
 function toggle(){
-
-    console.log("frontend");
   if(curUserId == 0)
     curUserId=1;
   else
     curUserId=0;
-  // image
-  document.getElementById("img").src=users[curUserId].image;
-  // name
-  document.getElementById("card-name").innerText=users[curUserId].name;
+   document.getElementById("profile-img").src = users[curUserId].image;
+    document.getElementById("card-name").innerText = users[curUserId].name;
+    document.getElementById("card-gender").innerText = users[curUserId].gender;
 }
+
 function getRandomUser()
 {
   fetch("https://randomuser.me/api")
@@ -45,7 +41,9 @@ function getRandomUser()
       // name
       document.getElementById("card-name").innerText=name
       // img
-      document.getElementById("img").src=imageUrl
+      document.getElementById("profile-img").src=imageUrl
 
     })
 }
+  console.log("Hello from JS");
+  alert("hello from js");
